@@ -7,6 +7,10 @@ import styled from "styled-components";
 
 const StyledApp = styled.div`
   font-family: Montserrat;
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
 `;
 
 const App = () => {

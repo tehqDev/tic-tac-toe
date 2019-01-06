@@ -6,6 +6,7 @@ const StyledHeader = styled.div`
   font-size: 32px
   background: lightblue
   border-radius: 10px
+  padding: 5px 40px 5px 40px
 `;
 
 const Header = ({ title }) => {
