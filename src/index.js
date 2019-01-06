@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import Header from "../components/Header";
+import GameBoard from "../components/GameBoard";
+import Footer from "../components/Footer";
 import styled from "styled-components";
 
 const StyledApp = styled.div`
@@ -13,6 +15,8 @@ const App = () => {
   return (
     <StyledApp>
       <Header title={title} />
+      <GameBoard />
+      <Footer />
     </StyledApp>
   );
 };
