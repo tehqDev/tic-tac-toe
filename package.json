@@ -1,13 +1,14 @@
 {
-  "name": "new",
+  "name": "tic-tac-toe",
   "version": "1.0.0",
-  "description": "",
+  "description": "tic-tac-toe made with React",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
     "react": "16.7.0-alpha.2",
     "react-dom": "16.7.0-alpha.2",
-    "react-scripts": "2.0.3"
+    "react-scripts": "2.0.3",
+    "styled-components": "4.1.3"
   },
   "devDependencies": {},
   "scripts": {
