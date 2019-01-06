@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
-
-import "./styles.css";
+import Header from "../components/Header";
 
 const App = () => {
-  return <div>hello world</div>;
+  const [title, setTitle] = useState("tic-tac-toe");
+
+  return (
+    <div>
+      <Header title={title} />
+    </div>
+  );
 };
 
 const rootElement = document.getElementById("root");
