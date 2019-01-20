@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import BoardButton from "./BoardButton";
 
@@ -17,20 +17,14 @@ const StyledGameBoard = styled.div`
   width: 300px
 `;
 
-const GameBoard = ({ turnState, setTurnState }) => {
+const GameBoard = ({ setMarker, boardButtons }) => {
   return (
     <StyledGameBoard>
-      <BoardButton turnState={turnState} setTurnState={setTurnState} />
-      <BoardButton turnState={turnState} setTurnState={setTurnState} />
-      <BoardButton turnState={turnState} setTurnState={setTurnState} />
-
-      <BoardButton turnState={turnState} setTurnState={setTurnState} />
-      <BoardButton turnState={turnState} setTurnState={setTurnState} />
-      <BoardButton turnState={turnState} setTurnState={setTurnState} />
-
-      <BoardButton turnState={turnState} setTurnState={setTurnState} />
-      <BoardButton turnState={turnState} setTurnState={setTurnState} />
-      <BoardButton turnState={turnState} setTurnState={setTurnState} />
+      {boardButtons.map((button, index) => {
+        return (
+          <BoardButton key={button.id} button={button} setMarker={setMarker} />
+        );
+      })}
     </StyledGameBoard>
   );
 };

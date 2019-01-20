@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import TurnState from "./TurnState";
 
 const StyledBoardButton = styled.div`
   border-style: dashed
@@ -17,30 +16,14 @@ const StyledBoardButton = styled.div`
   color: lightgreen
   `;
 
-const BoardButton = ({ turnState, setTurnState }) => {
-  const [marker, setMarker] = useState("");
-
+const BoardButton = ({ setMarker, button }) => {
   const handleClick = () => {
-    if (turnState) {
-      switch (turnState) {
-        case TurnState.PLAYER_TURN:
-          setMarker("X");
-          setTurnState(TurnState.AI_TURN);
-          break;
-        case TurnState.AI_TURN:
-          setMarker("O");
-          setTurnState(TurnState.PLAYER_TURN);
-          break;
-        default:
-          setMarker("Z");
-          break;
-      }
-    } else {
-      setMarker("Z");
-    }
+    setMarker(button.id);
   };
 
-  return <StyledBoardButton onClick={handleClick}>{marker}</StyledBoardButton>;
+  return (
+    <StyledBoardButton onClick={handleClick}>{button.marker}</StyledBoardButton>
+  );
 };
 
 export default BoardButton;
