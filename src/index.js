@@ -16,6 +16,7 @@ const StyledApp = styled.div`
 `;
 
 const App = () => {
+  const [gameOver, setGameOver] = useState(false);
   const [title, setTitle] = useState("tic-tac-toe");
   const [turnState, setTurnState] = useState(TurnState.PLAYER_TURN);
   const [boardButtons, setBoardButtons] = useState([
@@ -48,10 +49,8 @@ const App = () => {
           });
           setBoardButtons(newButtons);
           setTurnState(TurnState.AI_TURN);
+          break;
 
-          break;
-        case TurnState.AI_TURN:
-          break;
         default:
           break;
       }
@@ -67,6 +66,7 @@ const App = () => {
       let buttonOptionIds = buttonOptions.map(button => {
         return button.id;
       });
+
       let randomMoveId =
         buttonOptionIds[Math.floor(Math.random() * buttonOptionIds.length)];
 
@@ -80,9 +80,14 @@ const App = () => {
           return button;
         }
       });
-      ///alert(JSON.stringify(newAiButtons));
-      setBoardButtons(newAiButtons);
-      setTurnState(TurnState.PLAYER_TURN);
+
+      // simulate decision making... :)
+      const timer = setTimeout(() => {
+        setBoardButtons(newAiButtons);
+        setTurnState(TurnState.PLAYER_TURN);
+      }, 2000);
+
+      return () => clearInterval(timer);
     }
   });
 
