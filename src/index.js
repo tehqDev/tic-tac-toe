@@ -58,6 +58,66 @@ const App = () => {
   };
 
   useEffect(() => {
+    // check win conditions
+    const playerButtons = boardButtons.filter(button => button.marker === "X");
+    const cpuButtons = boardButtons.filter(button => button.marker === "O");
+
+    const playerButtonIds = playerButtons.map(button => {
+      return button.id;
+    });
+
+    const cpuButtonIds = cpuButtons.map(button => {
+      return button.id;
+    });
+    //alert(JSON.stringify(playerButtonIds))
+
+    const winConditions = [
+      {
+        positions: ["1", "2", "3"]
+      },
+      {
+        positions: ["4", "5", "6"]
+      },
+      {
+        positions: ["7", "8", "9"]
+      },
+      {
+        positions: ["1", "5", "9"]
+      },
+      {
+        positions: ["3", "5", "7"]
+      },
+      {
+        positions: ["1", "4", "7"]
+      },
+      {
+        positions: ["2", "5", "8"]
+      },
+      {
+        positions: ["3", "6", "9"]
+      }
+    ];
+
+    winConditions.map(condition => {
+      let playerWin = condition.positions.every(winCondition => {
+        return playerButtonIds.some(id => id == winCondition);
+      });
+
+      let cpuWin = condition.positions.every(winCondition => {
+        return cpuButtonIds.some(id => id == winCondition);
+      });
+
+      if (playerWin) {
+        setTurnState(TurnState.PLAYER_WIN);
+      }
+
+      if (cpuWin) {
+        setTurnState(TurnState.AI_WIN);
+      }
+    });
+  });
+
+  useEffect(() => {
     if (turnState === TurnState.AI_TURN) {
       let buttonOptions = boardButtons.filter(button => {
         return button.marker === "";
@@ -85,7 +145,7 @@ const App = () => {
       const timer = setTimeout(() => {
         setBoardButtons(newAiButtons);
         setTurnState(TurnState.PLAYER_TURN);
-      }, 2000);
+      }, 1500);
 
       return () => clearInterval(timer);
     }
@@ -94,7 +154,7 @@ const App = () => {
   return (
     <StyledApp>
       <Header title={title} />
-      <Status playerStatus={turnState} />
+      <Status turnState={turnState} />
       <GameBoard setMarker={setMarker} boardButtons={boardButtons} />
       <Footer />
     </StyledApp>

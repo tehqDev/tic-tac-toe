@@ -12,9 +12,29 @@ const StyledStatus = styled.div`
   padding: 5px;
 `;
 
-const Status = ({ playerStatus }) => {
-  const message =
-    playerStatus === TurnState.PLAYER_TURN ? "Player Turn" : "Computer Turn";
+const Status = ({ turnState }) => {
+  let message = "";
+
+  switch (turnState) {
+    case TurnState.PLAYER_TURN:
+      message = "Player Turn";
+      break;
+
+    case TurnState.AI_TURN:
+      message = "Cpu Turn";
+      break;
+
+    case TurnState.PLAYER_WIN:
+      message = "Player Wins!";
+      break;
+
+    case TurnState.AI_WIN:
+      message = "Cpu Wins!";
+      break;
+
+    default:
+      break;
+  }
 
   return <StyledStatus>{message}</StyledStatus>;
 };
