@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledBoardButton = styled.div`
   border-style: dashed
   border-color: lightblue
-  border-width: 5px
+  border-width: 3px
   width: 50px
   height: 50px
   display: flex

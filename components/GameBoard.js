@@ -5,8 +5,8 @@ import BoardButton from "./BoardButton";
 const StyledGameBoard = styled.div`
   border-thickness: 3px
   border-color: lightblue
-  border-style: dashed
-  border-radius: 4px
+  border-style: solid
+  border-radius: 20px
   display: flex
   flex-direction: row
   flex-wrap: wrap
@@ -20,7 +20,7 @@ const StyledGameBoard = styled.div`
 const GameBoard = ({ setMarker, boardButtons }) => {
   return (
     <StyledGameBoard>
-      {boardButtons.map((button, index) => {
+      {boardButtons.map(button => {
         return (
           <BoardButton key={button.id} button={button} setMarker={setMarker} />
         );

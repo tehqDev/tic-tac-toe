@@ -114,6 +114,15 @@ const App = () => {
       if (cpuWin) {
         setTurnState(TurnState.AI_WIN);
       }
+
+      const draw =
+        playerButtonIds.length + cpuButtonIds.length == 9 &&
+        !playerWin &&
+        !cpuWin;
+
+      if (draw) {
+        setTurnState(TurnState.DRAW);
+      }
     });
   });
 

@@ -32,6 +32,10 @@ const Status = ({ turnState }) => {
       message = "Cpu Wins!";
       break;
 
+    case TurnState.DRAW:
+      message = "Draw!";
+      break;
+
     default:
       break;
   }
