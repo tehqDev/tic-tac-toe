@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import GameBoard from "../components/GameBoard";
 import Footer from "../components/Footer";
 import Status from "../components/Status";
+import ResetButton from "../components/ResetButton";
 import TurnState from "../components/TurnState";
 import styled from "styled-components";
 
@@ -15,23 +16,31 @@ const StyledApp = styled.div`
   align-items: center
 `;
 
+const initialState = [
+  { marker: "", id: 1 },
+  { marker: "", id: 2 },
+  { marker: "", id: 3 },
+
+  { marker: "", id: 4 },
+  { marker: "", id: 5 },
+  { marker: "", id: 6 },
+
+  { marker: "", id: 7 },
+  { marker: "", id: 8 },
+  { marker: "", id: 9 }
+];
+
 const App = () => {
-  const [gameOver, setGameOver] = useState(false);
+  const [reset, setReset] = useState(false);
   const [title, setTitle] = useState("tic-tac-toe");
   const [turnState, setTurnState] = useState(TurnState.PLAYER_TURN);
-  const [boardButtons, setBoardButtons] = useState([
-    { marker: "", id: 1 },
-    { marker: "", id: 2 },
-    { marker: "", id: 3 },
+  const [boardButtons, setBoardButtons] = useState(initialState);
 
-    { marker: "", id: 4 },
-    { marker: "", id: 5 },
-    { marker: "", id: 6 },
-
-    { marker: "", id: 7 },
-    { marker: "", id: 8 },
-    { marker: "", id: 9 }
-  ]);
+  const initialize = () => {
+    setBoardButtons(initialState);
+    setTurnState(TurnState.PLAYER_TURN);
+    setReset(false);
+  };
 
   const setMarker = id => {
     if (turnState) {
@@ -69,7 +78,6 @@ const App = () => {
     const cpuButtonIds = cpuButtons.map(button => {
       return button.id;
     });
-    //alert(JSON.stringify(playerButtonIds))
 
     const winConditions = [
       {
@@ -123,6 +131,10 @@ const App = () => {
       if (draw) {
         setTurnState(TurnState.DRAW);
       }
+
+      if (draw || playerWin || cpuWin) {
+        setReset(true);
+      }
     });
   });
 
@@ -165,6 +177,15 @@ const App = () => {
       <Header title={title} />
       <Status turnState={turnState} />
       <GameBoard setMarker={setMarker} boardButtons={boardButtons} />
+      <div>
+        {reset ? (
+          <div>
+            <ResetButton reset={initialize} />
+          </div>
+        ) : (
+          <div />
+        )}
+      </div>
       <Footer />
     </StyledApp>
   );

@@ -12,8 +12,8 @@ const StyledGameBoard = styled.div`
   flex-wrap: wrap
   justify-content: center
   align-items: center
-  margin: 20px
-  padding: 50px
+  margin: 30px
+  padding: 20px 0px 20px 0px
   width: 300px
 `;
 
