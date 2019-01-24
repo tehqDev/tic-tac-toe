@@ -15,7 +15,17 @@ const StyledFooter = styled.div`
 `;
 
 const Footer = () => {
-  return <StyledFooter>made w/ React || footer :)</StyledFooter>;
+  return (
+    <StyledFooter>
+      <div>
+        made with{" "}
+        <a target="_blank" href="https://reactjs.org">
+          React
+        </a>{" "}
+        :)
+      </div>
+    </StyledFooter>
+  );
 };
 
 export default Footer;

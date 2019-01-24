@@ -107,11 +107,11 @@ const App = () => {
     ];
 
     winConditions.map(condition => {
-      let playerWin = condition.positions.every(winCondition => {
+      const playerWin = condition.positions.every(winCondition => {
         return playerButtonIds.some(id => id == winCondition);
       });
 
-      let cpuWin = condition.positions.every(winCondition => {
+      const cpuWin = condition.positions.every(winCondition => {
         return cpuButtonIds.some(id => id == winCondition);
       });
 
@@ -140,18 +140,18 @@ const App = () => {
 
   useEffect(() => {
     if (turnState === TurnState.AI_TURN) {
-      let buttonOptions = boardButtons.filter(button => {
+      const buttonOptions = boardButtons.filter(button => {
         return button.marker === "";
       });
 
-      let buttonOptionIds = buttonOptions.map(button => {
+      const buttonOptionIds = buttonOptions.map(button => {
         return button.id;
       });
 
-      let randomMoveId =
+      const randomMoveId =
         buttonOptionIds[Math.floor(Math.random() * buttonOptionIds.length)];
 
-      let newAiButtons = boardButtons.map(button => {
+      const newAiButtons = boardButtons.map(button => {
         if (button.id === randomMoveId) {
           return {
             id: button.id,
