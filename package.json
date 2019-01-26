@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "@githubprimer/octicons-react": "8.3.0",
     "react": "16.7.0-alpha.2",
     "react-dom": "16.7.0-alpha.2",
     "react-scripts": "2.0.3",
