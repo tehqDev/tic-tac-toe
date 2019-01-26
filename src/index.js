@@ -177,14 +177,7 @@ const App = () => {
       <Header title={title} />
       <Status turnState={turnState} />
       <GameBoard setMarker={setMarker} boardButtons={boardButtons} />
-      {reset ? (
-        <div>
-          {" "}
-          <ResetButton reset={initialize} />{" "}
-        </div>
-      ) : (
-        <div />
-      )}
+      {reset ? <ResetButton reset={initialize} /> : <div />}
       <Footer />
     </StyledApp>
   );
